@@ -106,7 +106,7 @@ map.fitBounds(line.getBounds());
 fetch(API_URL)
 .then(r=>r.json())
 .then(data=>{
-  const km=data.km;
+  const km=data.total;
   const percent=Math.min(km/TOTAL_KM,1);
 
   const pos=greatCirclePoint(route[0],route[1],percent);
