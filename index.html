@@ -29,6 +29,7 @@ body { margin:0; font-family:Arial; background:#f5f5f5; }
 <div id="panel">
 <b>Reto solidario Vigo → Derang</b><br>
   <div id="bigcounter">0 km</div>
+  <div id="pais" style="font-size:28px; font-weight:bold; color:#e53935;"></div>
 <span id="info">Cargando...</span>
 <div id="progress"><div id="bar"></div></div>
 </div>
@@ -109,6 +110,18 @@ for(let i=0;i<=100;i++){
 const line=L.polyline(curve,{color:'red',weight:3}).addTo(map);
 map.fitBounds(line.getBounds());
 
+function paisActual(lat,lng){
+
+ if(lng < -5) return "España 🇪🇸";
+ if(lng < 5) return "Francia 🇫🇷";
+ if(lng < 20) return "Italia 🇮🇹";
+ if(lng < 35) return "Grecia 🇬🇷";
+ if(lng < 55) return "Turquía 🇹🇷";
+ if(lng < 70) return "Irán 🇮🇷";
+ if(lng < 80) return "Pakistán 🇵🇰";
+ return "India 🇮🇳";
+}
+  
 // ---- cargar km ----
 fetch(API_URL)
 .then(r=>r.json())
@@ -118,6 +131,10 @@ fetch(API_URL)
 
   const pos=greatCirclePoint(route[0],route[1],percent);
   marker.setLatLng(pos);
+
+  const pais = paisActual(pos[0],pos[1]);
+document.getElementById("pais").innerText =
+"¡Hemos llegado a " + pais + "!";
 
   document.getElementById("info").innerHTML=
     km.toFixed(1)+" km recorridos — "+(TOTAL_KM-km).toFixed(1)+" km restantes";
