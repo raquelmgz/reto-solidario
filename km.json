@@ -1,1 +1,6 @@
-{ "km": 100 }
+{
+  "total": 0,
+  "historial": [
+    { "fecha":"2026-03-01", "km":0, "grupo":"Inicio" }
+  ]
+}
