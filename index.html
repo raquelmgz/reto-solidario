@@ -110,18 +110,18 @@ for(let i=0;i<=100;i++){
 const line=L.polyline(curve,{color:'red',weight:3}).addTo(map);
 map.fitBounds(line.getBounds());
 
-//function paisActual(lat,lng){
+function paisActual(lat,lng){
 
-// if(lng < -5) return "España";
- //if(lng < 10) return "Francia";
-// if(lng < 20) return "Italia";
- //if(lng < 35) return "Grecia";
- //if(lng < 55) return "Turquía";
- //if(lng < 80) return "Pakistán";
- //return "India 🇮🇳";
-//}//
+ if(lng < -5) return "España";
+ if(lng < 10) return "Francia";
+ if(lng < 20) return "Italia";
+ if(lng < 35) return "Grecia";
+ if(lng < 55) return "Turquía";
+ if(lng < 80) return "Pakistán";
+ return "India 🇮🇳";
+}
 
-  function paisActual(lat,lng){
+/*  function paisActual(lat,lng){
 
 if(lat>36 && lat<44 && lng>-10 && lng<5)
  return "España 🇪🇸";
@@ -142,7 +142,7 @@ if(lat>23 && lat<37 && lng>60 && lng<77)
  return "Pakistán 🇵🇰";
 
 return "India 🇮🇳";
-}
+}*/
   
 // ---- cargar km ----
 fetch(API_URL)
